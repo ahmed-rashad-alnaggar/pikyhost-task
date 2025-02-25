@@ -71,7 +71,7 @@ class HeroSection extends Page
                 ...$this->getCTAFields(),
                 ...$this->getImageUploadFields()
             ])
-            ->columns(4)
+            ->columns(['default' => 4])
             ->model($this->model)
             ->statePath('data')
             ->operation('edit');
@@ -90,21 +90,21 @@ class HeroSection extends Page
                 ->placeholder('Enter Tagline')
                 ->required()
                 ->maxLength(255)
-                ->columnSpan(2),
+                ->columnSpanFull(),
 
             TextInput::make('content.main_heading')
                 ->label('Main Heading')
                 ->placeholder('Enter Main Heading')
                 ->required()
                 ->maxLength(255)
-                ->columnSpan(2),
+                ->columnSpanFull(),
 
             TextInput::make('content.sub_heading')
                 ->label('Sub Heading')
                 ->placeholder('Enter Sub Heading')
                 ->required()
                 ->maxLength(255)
-                ->columnSpan(2),
+                ->columnSpanFull(),
         ];
     }
 
@@ -129,7 +129,7 @@ class HeroSection extends Page
                 ->placeholder('Enter Call-To-Action Text')
                 ->required()
                 ->maxLength(255)
-                ->columnSpan(2),
+                ->columnSpanFull(),
 
             Select::make('content.cta_type')
                 ->label('CTA Type')
@@ -140,7 +140,10 @@ class HeroSection extends Page
                 ->selectablePlaceholder(false)
                 ->live()
                 ->required()
-                ->columnSpan(1),
+                ->columnSpan([
+                    'default' => 2,
+                    'lg' => 1
+                ]),
 
             Select::make('content.cta_link')
                 ->label('Section')
@@ -154,7 +157,10 @@ class HeroSection extends Page
                     }
                 )
                 ->required()
-                ->columnSpan(3),
+                ->columnSpan([
+                    'default' => 2,
+                    'lg' => 3
+                ]),
 
             TextInput::make('content.cta_link')
                 ->label('CTA URL')
@@ -163,7 +169,10 @@ class HeroSection extends Page
                 ->url()
                 ->required()
                 ->maxLength(255)
-                ->columnSpan(3),
+                ->columnSpan([
+                    'default' => 2,
+                    'lg' => 3
+                ]),
         ];
     }
 

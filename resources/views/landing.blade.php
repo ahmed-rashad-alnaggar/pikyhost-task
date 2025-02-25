@@ -52,13 +52,19 @@
             --main-heading-font-family:
                 {!!  $theme['fonts']['families']['main_heading'] !!}
             ;
-
             --sub-heading-font-family:
                 {!! $theme['fonts']['families']['sub_heading'] !!}
 
             ;
             --body-text-font-family:
                 {!! $theme['fonts']['families']['body_text'] !!}
+            ;
+
+            --primary-gradient-from-color:
+                {{ $theme['gradients']['primary']['from'] }}
+            ;
+            --primary-gradient-to-color:
+                {{ $theme['gradients']['primary']['to'] }}
             ;
 
             scroll-behavior: smooth;
@@ -76,11 +82,11 @@
 
         @keyframes slide-v {
             from {
-                transform: translateY(0);
+                transform: translateY(-100%);
             }
 
             to {
-                transform: translateY(-50%);
+                transform: translateY(0);
             }
         }
 
@@ -105,7 +111,7 @@
 </head>
 
 <body class="relative bg-[--primary-color] font-[family-name:var(--body-text-font-family)] text-[--body-text-color]">
-    <header class="absolute left-0 top-0 flex w-full items-center justify-between border-b border-white px-8 py-4">
+    <header class="absolute left-0 top-0 z-30 flex w-full items-center justify-between border-b border-white px-8 py-2">
         <a href="/">
             <img src="{{ $page['logo'] }}" class="h-8 object-contain md:h-12" alt="Pikyhost" />
         </a>
@@ -117,8 +123,8 @@
 
     <main class="space-y-8">
         <section id="hero" class="h-screen">
-            <div class="relative flex h-[93%] items-center justify-center gap-y-4 px-8 md:h-[90%] md:justify-start">
-                <div class="absolute inset-0 -z-10 h-full w-full overflow-hidden">
+            <div class="relative flex h-[93%] items-center z-0 justify-center gap-y-4 bg-white px-8 md:h-[90%] md:justify-start">
+                <div class="absolute inset-0 z-10 h-full w-full overflow-hidden">
                     <div class="ml-auto flex w-max origin-[left_center] translate-x-14 rotate-[15deg] gap-3 md:translate-x-40">
                         @foreach ($heroSectionBackgroundImagesChunks as $chunk)
                             <div class="md:[80vh] h-[50vh] flex-shrink-0 flex-grow-0 basis-64 animate-[slide-v_75s_linear_infinite] space-y-3 odd:[animation-direction:reverse] md:basis-80">
@@ -130,9 +136,7 @@
                     </div>
                 </div>
 
-                <div class="relative flex flex-col items-center gap-y-2 md:w-1/2 md:items-start">
-                    <div class="absolute -inset-x-[5%] -inset-y-[15%] -z-10 h-[130%] w-[110%] rounded-full bg-[--primary-color] opacity-20 md:inset-x-0"></div>
-
+                <div class="relative flex z-10 flex-col items-center gap-y-2 md:w-1/2 md:items-start">
                     <p class="font-[family-name:var(--sub-heading-font-family)] text-lg font-semibold text-[--sub-heading-color]">
                         {{ $heroSection['tagline'] }}
                     </p>
@@ -147,10 +151,12 @@
                         <span class="absolute inset-0 animate-[pulseBorder_1.5s_infinite_ease-in-out] border-2 border-white/60 blur-lg"></span>
                     </a>
                 </div>
+
+                <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-[--primary-gradient-to-color] via-[--primary-gradient-to-color] via-[33%] to-transparent"></div>
             </div>
 
-            <div class="h-[7%] overflow-hidden py-2 [mask-image:linear-gradient(to_right,_transparent,_#000000_10%_90%,_transparent)] md:h-[10%]">
-                <div class="flex h-full w-max animate-[slide-h_50s_linear_infinite] items-center hover:[animation-play-state:paused]">
+            <div class="h-[7%] overflow-hidden py-3.5 [mask-image:linear-gradient(to_right,_transparent,_#000000_10%_90%,_transparent)] md:h-[10%]">
+                <div class="flex h-full w-max animate-[slide-h_50s_linear_infinite] items-center">
                     @foreach ($heroSectionSliderImages as $logo)
                         <img src="{{ $logo }}" class="me-[5vw] ms-[5vw] max-h-full object-contain" alt="logo" />
                     @endforeach
