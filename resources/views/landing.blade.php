@@ -5,8 +5,15 @@
 
     $heroSectionBackgroundImagesChunks = array_chunk(
         $heroSection['background_images'],
-        intdiv(count($heroSection['background_images']), 3) // Create 3 coulmns.
+        intdiv(count($heroSection['background_images']), 3)
     );
+
+    // Only Allow 3 columns.
+    if (count($heroSectionBackgroundImagesChunks) > 3) {
+        array_push($heroSectionBackgroundImagesChunks[2], ...$heroSectionBackgroundImagesChunks[3]);
+        unset($heroSectionBackgroundImagesChunks[3]);
+    }
+
     $heroSectionBackgroundImagesChunks = array_map(
         fn (array $chunk): array => array_merge($chunk, $chunk), $heroSectionBackgroundImagesChunks
     );
