@@ -89,11 +89,11 @@
 
         @keyframes slide-v {
             from {
-                transform: translateY(-100%);
+                transform: translateY(0);
             }
 
             to {
-                transform: translateY(0);
+                transform: translateY(-50%);
             }
         }
 
@@ -129,21 +129,21 @@
     </header>
 
     <main class="space-y-8">
-        <section id="hero" class="h-screen">
-            <div class="relative flex h-[93%] items-center z-0 justify-center gap-y-4 bg-white px-8 md:h-[90%] md:justify-start">
+        <section id="hero">
+            <div class="relative z-0 flex h-[90dvh] max-h-[500px] items-center justify-center gap-y-4 bg-white px-8 md:max-h-[550px] md:justify-start">
                 <div class="absolute inset-0 z-10 h-full w-full overflow-hidden">
-                    <div class="ml-auto flex w-max origin-[left_center] translate-x-14 rotate-[15deg] gap-3 md:translate-x-40">
+                    <div class="ml-auto flex h-full w-[90%] origin-bottom-left -translate-y-[20%] rotate-[15deg] items-start gap-x-3 md:w-[65%] md:max-w-[870px] md:-translate-y-[35%]">
                         @foreach ($heroSectionBackgroundImagesChunks as $chunk)
-                            <div class="md:[80vh] h-[50vh] flex-shrink-0 flex-grow-0 basis-64 animate-[slide-v_75s_linear_infinite] space-y-3 odd:[animation-direction:reverse] md:basis-80">
+                            <div class="flex w-[70%] max-w-80 flex-none animate-[slide-v_50s_linear_infinite] flex-col will-change-transform even:[animation-direction:reverse]">
                                 @foreach ($chunk as $thumbnail)
-                                    <img src="{{ $thumbnail }}" class="h-auto w-full rounded-md object-cover" alt="thumbnail" />
+                                    <img src="{{ $thumbnail }}" class="rounded-md object-cover [margin-block-end:0.75rem] [margin-block-start:0.75rem]" alt="thumbnail" />
                                 @endforeach
                             </div>
                         @endforeach
                     </div>
                 </div>
 
-                <div class="relative flex z-10 flex-col items-center gap-y-2 md:w-1/2 md:items-start">
+                <div class="relative z-10 flex flex-col items-center gap-y-2 md:w-1/2 md:items-start">
                     <p class="font-[family-name:var(--sub-heading-font-family)] text-lg font-semibold text-[--sub-heading-color]">
                         {{ $heroSection['tagline'] }}
                     </p>
@@ -153,17 +153,17 @@
                     <p class="font-[family-name:var(--sub-heading-font-family)] text-lg font-semibold text-[--sub-heading-color]">
                         {{ $heroSection['sub_heading'] }}
                     </p>
-                    <a href="{{ $heroSection['cta_link'] }}" class="mt-6 relative border border-white/50 px-6 md:px-12 py-3 font-[family-name:var(--sub-heading-font-family)] text-xl font-semibold text-[--sub-heading-color] transition hover:bg-white/10 md:text-2xl">
+                    <a href="{{ $heroSection['cta_link'] }}" class="relative mt-6 border border-white/50 px-6 py-3 font-[family-name:var(--sub-heading-font-family)] text-xl font-semibold text-[--sub-heading-color] transition hover:bg-white/10 md:px-12 md:text-2xl">
                         <span class="relative z-10">{{ $heroSection['cta_text'] }}</span>
                         <span class="absolute inset-0 animate-[pulseBorder_1.5s_infinite_ease-in-out] border-2 border-white/60 blur-lg"></span>
                     </a>
                 </div>
 
-                <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-[--primary-gradient-to-color] via-[--primary-gradient-to-color] via-[33%] to-transparent"></div>
+                <div class="absolute inset-0 h-full w-full bg-gradient-to-r from-[--primary-gradient-to-color] via-[--primary-gradient-to-color] via-[33%] to-transparent"></div>
             </div>
 
-            <div class="h-[7%] overflow-hidden py-3.5 [mask-image:linear-gradient(to_right,_transparent,_#000000_10%_90%,_transparent)] md:h-[10%]">
-                <div class="flex h-full w-max animate-[slide-h_50s_linear_infinite] items-center">
+            <div class="h-[10dvh] max-h-[100px] overflow-hidden py-3.5 [mask-image:linear-gradient(to_right,_transparent,_#000000_10%_90%,_transparent)]">
+                <div class="flex h-full w-max animate-[slide-h_50s_linear_infinite] items-center will-change-transform">
                     @foreach ($heroSectionSliderImages as $logo)
                         <img src="{{ $logo }}" class="me-[5vw] ms-[5vw] max-h-full object-contain" alt="logo" />
                     @endforeach
