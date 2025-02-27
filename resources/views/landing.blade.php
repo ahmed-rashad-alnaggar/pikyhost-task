@@ -130,7 +130,7 @@
 
     <main class="space-y-8">
         <section id="hero">
-            <div class="relative z-0 flex h-[90dvh] max-h-[500px] items-center justify-center gap-y-4 bg-white px-8 md:max-h-[550px] md:justify-start">
+            <div class="relative z-0 flex h-[90vh] max-h-[500px] items-center justify-center gap-y-4 bg-white px-8 md:max-h-[550px] md:justify-start">
                 <div class="absolute inset-0 z-10 h-full w-full overflow-hidden">
                     <div class="ml-auto flex h-full w-[90%] origin-bottom-left -translate-y-[20%] rotate-[15deg] items-start gap-x-3 md:w-[65%] md:max-w-[870px] md:-translate-y-[35%]">
                         @foreach ($heroSectionBackgroundImagesChunks as $chunk)
@@ -162,7 +162,7 @@
                 <div class="absolute inset-0 h-full w-full bg-gradient-to-r from-[--primary-gradient-to-color] via-[--primary-gradient-to-color] via-[33%] to-transparent"></div>
             </div>
 
-            <div class="h-[10dvh] max-h-[100px] overflow-hidden py-3.5 [mask-image:linear-gradient(to_right,_transparent,_#000000_10%_90%,_transparent)]">
+            <div class="h-[10vh] max-h-[100px] overflow-hidden py-3.5 [mask-image:linear-gradient(to_right,_transparent,_#000000_10%_90%,_transparent)]">
                 <div class="flex h-full w-max animate-[slide-h_50s_linear_infinite] items-center will-change-transform">
                     @foreach ($heroSectionSliderImages as $logo)
                         <img src="{{ $logo }}" class="me-[5vw] ms-[5vw] max-h-full object-contain" alt="logo" />
